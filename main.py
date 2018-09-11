@@ -8,7 +8,7 @@ myGame.game_menu()
 size = myGame.board_size
 mines = myGame.mines_num
 
-playing = UserInteraction(size,mines)
+playing = UserInteraction(size, mines)
 playing.play()
 
 

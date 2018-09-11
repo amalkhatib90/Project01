@@ -7,7 +7,7 @@ from random import randint
 from square import Square
 
 
-class BoardFunctions():
+class BoardFunctions:
 
     def __init__(self):
         self.boardSize = 0
@@ -18,18 +18,18 @@ class BoardFunctions():
     #@postcondition: grid generated
     #@returns: grid
     #@author: Clare
-    def make_grid(self,size):
-            size=int(size)
+    def make_grid(self, size):
+            size = int(size)
             grid = [[0 for x in range(size)] for y in range(size)]
-            for i in range(0,size):
-                for j in range(0,size):
+            for i in range(0, size):
+                for j in range(0, size):
                     grid[i][j] = Square()
             return(grid)
 
-    def generate_mines(self,size,grid):
+    def generate_mines(self, size, grid):
         for i in range(0, self.mines_num):
             is_bomb = False
-            while is_bomb==False:
+            while is_bomb == False:
                 a = randint(0, size - 1)
                 b = randint(0, size - 1)
                 if grid[a][b].is_mine == False:
@@ -52,22 +52,22 @@ class BoardFunctions():
     #@postcondition: grid is printed to look nice for the user
     #@returns: none
     #@author: Clare
-    def print_board(self,size,main_grid):
-            size=int(size)
+    def print_board(self, size, main_grid):
+            size = int(size)
             grid = [[0 for x in range(size+2)] for y in range(size+2)]
-            for i in range(0,size+2):
-                for j in range(0,size+2):
-                    if(i==0 and j==0 or i==0 and j==1 or i==1 and j==0
-                    or i==1 and j==1):
-                        grid[i][j]=" "
+            for i in range(0, size+2):
+                for j in range(0, size+2):
+                    if(i == 0 and j == 0 or i == 0 and j == 1 or i == 1 and j == 0
+                    or i == 1 and j == 1):
+                        grid[i][j] = " "
                     elif(j == 0):
-                        grid[i][j]= i-1
+                        grid[i][j] = i-1
                     elif(i == 0):
-                        grid[i][j]=j-1
+                        grid[i][j] = j-1
                     elif(j == 1):
                         grid[i][j]="|"
-                    elif(i==1):
-                        grid[i][j]="~"
+                    elif(i == 1):
+                        grid[i][j] = "~"
                     else:
                         grid[i][j] = main_grid[i-2][j-2]
 
@@ -81,26 +81,25 @@ class BoardFunctions():
 
     def count_nearby_mines(self, x, y):
         adj_mine_counter = 0
-        if Square(x + 1, y).is_mine == True:
+        if Square(x + 1, y).is_mine:
             adj_mine_counter += 1
-        if Square(x + 1, y + 1).is_mine == True:
+        if Square(x + 1, y + 1).is_mine:
             adj_mine_counter += 1
-        if Square(x + 1, y - 1).is_mine == True:
+        if Square(x + 1, y - 1).is_mine:
             adj_mine_counter += 1
-        if Square(x, y + 1).is_mine == True:
+        if Square(x, y + 1).is_mine:
             adj_mine_counter += 1
-        if Square(x, y - 1).is_mine == True:
+        if Square(x, y - 1).is_mine:
             adj_mine_counter += 1
-        if Square(x - 1, y).is_mine == True:
+        if Square(x - 1, y).is_mine:
             adj_mine_counter += 1
-        if Square(x - 1, y + 1).is_mine == True:
+        if Square(x - 1, y + 1).is_mine:
             adj_mine_counter += 1
-        if Square(x - 1, y - 1).is_mine == True:
+        if Square(x - 1, y - 1).is_mine:
             adj_mine_counter += 1
         Square(x, y).num_adj_mines = adj_mine_counter
 
-
-    def mine_check(self):
-        for w in range(0, boardSize):
-            for z in range(0, boardSize):
-                count_nearby_mines(Square.x, Square.y)
+    def mine_check(self, x, y):
+        for w in range(0, self.boardSize):
+            for z in range(0, self.boardSize):
+                self.count_nearby_mines(Square.x, Square.y)

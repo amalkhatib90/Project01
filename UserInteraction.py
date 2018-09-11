@@ -2,17 +2,17 @@ from boardFunctions import BoardFunctions
 from square import Square
 
 
-class UserInteraction():
+class UserInteraction:
     ##variable to check when the game ends
 
-    def __init__(self,size,mines):
-        self.size=size
-        self.mines=mines
+    def __init__(self, size, mines):
+        self.size = size
+        self.mines = mines
         self.game_over = False
         self.myBoard = BoardFunctions()
         self.myBoard.mines_num = mines
         self.grid = self.myBoard.make_grid(self.size)
-        self.myBoard.generate_mines(self.size,self.grid)
+        self.myBoard.generate_mines(self.size, self.grid)
 
     def reveal(self, x, y):
         if self.grid[x][y].num_adj_mines != 0:
@@ -21,7 +21,7 @@ class UserInteraction():
             if self.grid[x + 1][y].is_flagged != False and self.grid[x + 1][y].num_adj_mines != 0:
                 self.grid[x + 1][y].is_revealed = True
             else:
-                self.reveal(x+1, y)
+                self.reveal(x + 1, y)
             if self.grid[x - 1][y].is_flagged != False and self.grid[x - 1][y].num_adj_mines != 0:
                 self.grid[x - 1][y].is_revealed = True
             else:
@@ -64,26 +64,26 @@ class UserInteraction():
             return 0
 
     def play(self):
-        while(self.game_over != True):
-            numFlags = self.mines
+        while not self.game_over:
+            num_flags = self.mines
             self.myBoard.print_board(self.size, self.grid)
-            print("Number of flags: %s" % numFlags)
-            userX = int(input("Enter an X coordinate: "))
-            userY = int(input("Enter a Y coordinate: "))
-            userChoice = input("Enter an action flag [f], reveal [r], unflag [n]: ")
-            if userX > self.size or userY > self.size:
+            print("Number of flags: %s" % num_flags)
+            user_x = int(input("Enter an X coordinate: "))
+            user_y = int(input("Enter a Y coordinate: "))
+            user_choice = input("Enter an action flag [f], reveal [r], unflag [n]: ")
+            if user_x > self.size or user_y > self.size:
                 print("Invalid Try again")
-            elif self.grid[userX][userY].is_flagged == False and userChoice == "n":
+            elif self.grid[user_x][user_y].is_flagged == False and user_choice == "n":
                 print("Invalid try again")
-            elif self.grid[userX][userY].is_flagged == False and userChoice == "f":
-                self.grid[userX][userY].is_flagged = True
-                numFlags -= 1
+            elif self.grid[user_x][user_y].is_flagged == False and user_choice == "f":
+                self.grid[user_x][user_y].is_flagged = True
+                num_flags -= 1
                 self.check_win()
-            elif self.grid[userX][userY].is_flagged == True and userChoice == "n":
-                self.grid[userX][userY].is_flagged = False
-                numFlags += 1
-            elif self.grid[userX][userY].is_mine == True and userChoice == "r":
+            elif self.grid[user_x][user_y].is_flagged == True and user_choice == "n":
+                self.grid[user_x][user_y].is_flagged = False
+                num_flags += 1
+            elif self.grid[user_x][user_y].is_mine == True and user_choice == "r":
                 print("Game Over")
                 self.game_over = True
             else:
-                self.reveal(userX, userY)
+                self.reveal(user_x, user_y)
