@@ -70,7 +70,7 @@ class Executive:
                 if self.grid[i][x].is_mine and self.grid[i][x].is_flagged:
                     flag_on_mine += 1
         if flag_on_mine == self.mines:
-            print("/n You Win!")
+            print("\n    YOU WON!!! \n")
             self.game_over = True
         else:
             return 0
@@ -151,11 +151,11 @@ class Executive:
             elif self.grid[x][y].is_flagged and choice == "r":
                 print("You can't reveal a flagged space. Unflag before guessing this space or guess a different space.")
             elif self.grid[x][y].is_mine and choice == "r":
-                print("\n Game Over")
+                print("\n    GAME OVER!!! \n")
                 self.game_over = True
             else:
                 self.reveal(x, y)
-
+        
         for i in range(0, self.size):
             for j in range(0, self.size):
                 self.grid[i][j].is_revealed=True
