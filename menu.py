@@ -44,15 +44,17 @@ class Menu :
         print ("""Welcome to Minesweepers!
 
 Here are the game instructions:
-    * The game will provid players a square board with a number of hidden mines and similar number of flags.
-    * Player has three choices of action:
-        - Flag: to flag squares that might have mines.
-        - Unflag: to unflag if player changed mind.
-        - Reveal: to see what squares have underneath.
-    * When player chose to reveal:
-        - If the square has a mine -> Gameover!
-        - If not a mine, it will show spaces and numbers to tell player the number of mines around the chosen square.
-    * The goal is to flag all mines until the counter of flags equals to zero without revealing any mine.
+The game will provid players a square board with a number of hidden mines and similar number of flags.
+Player has three choices of action:
+    - Flag: to flag squares that might have mines.
+    - Unflag: to unflag if player changed mind.
+    - Reveal: to see what squares have underneath.
+When player chose to reveal:
+    - If the square has a mine -> Gameover!
+    - If not a mine, it will show spaces and numbers to tell player the number of mines around the chosen square.
+
+The goal is to flag all mines until the counter of flags equals to zero without revealing any mine.
+
 Good Luck!
 """)
 
