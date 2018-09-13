@@ -30,12 +30,11 @@ class Menu():
 #       else:
 #           return
 
-
     def play_again(self):
         if self.is_winner:
             print("YOU WON!!")
             self.game_menu()
-            self.is_winner = False
+           self.is_winner = False
         elif self.is_loser:
             print("GAME OVER!")
             self.game_menu()
