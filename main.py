@@ -1,6 +1,15 @@
-from menu import Menu
-from boardFunctions import BoardFunctions
-from UserInteraction import UserInteraction
+## @package main
+#  Main file for project
+#
+#  Project: Minesweeper
+#  Author: All
+#  Created: 09/06/18
+#  Completed:
 
-playing = UserInteraction()
+from menu import Menu
+from board import Board
+from executive import Executive
+
+playing = Executive()
+playing.setup()
 playing.play()
