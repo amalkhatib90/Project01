@@ -34,6 +34,7 @@ class Menu :
                 return
             play_again = input ("Play again (p), otherwise (q): ")
             if play_again == "p":
+                self.myGame = Executive ()
                 self.myGame.setup()
                 self.myGame.play()
             else:
