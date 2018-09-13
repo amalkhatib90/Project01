@@ -70,38 +70,63 @@ class Executive:
                 if self.grid[i][x].is_mine and self.grid[i][x].is_flagged:
                     flag_on_mine += 1
         if flag_on_mine == self.mines:
-            print("You Win!")
+            print("/n You Win!")
             self.game_over = True
         else:
             return 0
 
-    ## Generates board with user input for mines and size
-    #  @author: Ethan
+
     def setup(self):
         while True:
             try:
-                board_size_select = int(input("Please enter the board size between 2 and 15: "))
-            except ValueError:
-                print("That\'s not a number!")
-            else:
+                board_size_select = int (input ("Please enter the board size between 2 and 15: "))
                 if 2 <= board_size_select <= 15:
                     self.size = board_size_select
                     break
                 else:
-                    print('Not a valid board size. Try again')
+                    print ("Not valid size! Please try again: ")
+            except:
+                print ("That\'s not a number! Please try again: ")
         max_mines = self.size * self.size - 1
         while True:
             try:
-                mine_num_select = int(
-                    input("Enter the number of mines, it should be between 1 and " + str(max_mines) + ": "))
-            except ValueError:
-                print("That\'s not a number!")
-            else:
+                mine_num_select = int(input("Enter the number of mines, it should be between 1 and " + str(max_mines) + ": "))
                 if 1 <= mine_num_select <= max_mines:
-                    self.mines = mine_num_select
+                    self.mines = mine_num_select                    
                     break
                 else:
-                    print('Not a valid amount of mines. Try again')
+                    print ("Not a valid number! Please try again: ")
+            except:
+                    print ("That\'s not a number! Please try again: ")
+
+    ## Generates board with user input for mines and size
+    #  @author: Ethan
+    #def setup(self):
+    #    while True:
+    #        try:
+    #            board_size_select = int(input("Please enter the board size between 2 and 15: "))
+    #            
+    #        except ValueError:
+    #            print("That\'s not a number!")
+    #        else:
+    #            if 2 <= board_size_select <= 15:
+    #                self.size = board_size_select
+    #                break
+    #            else:
+    #                print('Not a valid board size. Try again')
+    #    max_mines = self.size * self.size - 1
+    #    while True:
+    #        try:
+    #            mine_num_select = int(
+    #                input("Enter the number of mines, it should be between 1 and " + str(max_mines) + ": "))
+    #        except ValueError:
+    #            print("That\'s not a number!")
+    #        else:
+    #            if 1 <= mine_num_select <= max_mines:
+    #                self.mines = mine_num_select
+    #                break
+    #            else:
+    #                print('Not a valid amount of mines. Try again')
 
         self.num_flags = self.mines
 
@@ -149,7 +174,7 @@ class Executive:
             elif self.grid[x][y].is_flagged and choice == "r":
                 print("You can't reveal a flagged space. Unflag before guessing this space or guess a different space.")
             elif self.grid[x][y].is_mine and choice == "r":
-                print("Game Over")
+                print("\n Game Over")
                 self.game_over = True
             else:
                 self.reveal(x, y)
