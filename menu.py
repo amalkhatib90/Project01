@@ -33,13 +33,13 @@ class Menu :
                 print("Goodbye! See you later!")
                 return
             play_again = input ("Play again (p), otherwise (q): ")
-            if play_again == "p":
-                self.myGame = Executive ()
-                self.myGame.setup()
-                self.myGame.play()
-            else:
-                print ("Goodbye! See you later!")
-                return
+            while play_again != "q":
+                if play_again == "p":
+                    self.myGame = Executive ()
+                    self.myGame.setup()
+                    self.myGame.play()
+            print ("Goodbye! See you later!")
+            return
 
     def game_rules (self):
         print ("""Welcome to Minesweepers!
