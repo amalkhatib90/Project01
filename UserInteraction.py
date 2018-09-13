@@ -120,6 +120,6 @@ class UserInteraction():
             elif self.grid[user_x][user_y].is_mine == True and user_choice == "r":
                 print("Game Over")
                 self.game_over = True
-                self.play_again()
+                #self.play_again()
             else:
                 self.reveal(user_x, user_y)
