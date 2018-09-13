@@ -76,57 +76,32 @@ class Executive:
             return 0
 
 
-    def setup(self):
+    def error_type_handler(self):
         while True:
             try:
-                board_size_select = int (input ("Please enter the board size between 2 and 15: "))
-                if 2 <= board_size_select <= 15:
-                    self.size = board_size_select
-                    break
-                else:
-                    print ("Not valid size! Please try again: ")
+                check = int (input())
+                break
             except:
                 print ("That\'s not a number! Please try again: ")
-        max_mines = self.size * self.size - 1
-        while True:
-            try:
-                mine_num_select = int(input("Enter the number of mines, it should be between 1 and " + str(max_mines) + ": "))
-                if 1 <= mine_num_select <= max_mines:
-                    self.mines = mine_num_select                    
-                    break
-                else:
-                    print ("Not a valid number! Please try again: ")
-            except:
-                    print ("That\'s not a number! Please try again: ")
+        return check
 
     ## Generates board with user input for mines and size
     #  @author: Ethan
-    #def setup(self):
-    #    while True:
-    #        try:
-    #            board_size_select = int(input("Please enter the board size between 2 and 15: "))
-    #            
-    #        except ValueError:
-    #            print("That\'s not a number!")
-    #        else:
-    #            if 2 <= board_size_select <= 15:
-    #                self.size = board_size_select
-    #                break
-    #            else:
-    #                print('Not a valid board size. Try again')
-    #    max_mines = self.size * self.size - 1
-    #    while True:
-    #        try:
-    #            mine_num_select = int(
-    #                input("Enter the number of mines, it should be between 1 and " + str(max_mines) + ": "))
-    #        except ValueError:
-    #            print("That\'s not a number!")
-    #        else:
-    #            if 1 <= mine_num_select <= max_mines:
-    #                self.mines = mine_num_select
-    #                break
-    #            else:
-    #                print('Not a valid amount of mines. Try again')
+    def setup(self):
+        print ("Please enter the board size between 2 and 15: ")
+        board_size_select = self.error_type_handler ()
+        if 2 <= board_size_select <= 15:
+            self.size = board_size_select
+        else:
+            print('Not a valid board size. Try again')
+        
+        max_mines = self.size * self.size - 1
+        print ("Enter the number of mines, it should be between 1 and " + str(max_mines))
+        mine_num_select = self.error_type_handler ()
+        if 1 <= mine_num_select <= max_mines:
+            self.mines = mine_num_select
+        else:
+            print('Not a valid amount of mines. Try again')
 
         self.num_flags = self.mines
 
@@ -144,8 +119,10 @@ class Executive:
         while not self.game_over:
             self.myBoard.print_board(self.size, self.grid)
             print("Number of flags: %s" % self.num_flags)
-            x = int(input("Enter an Y coordinate: "))
-            y = int(input("Enter a X coordinate: "))
+            print ("Enter an Y coordinate: ")
+            x = self.error_type_handler ()
+            print ("Enter a X coordinate: ")
+            y = self.error_type_handler ()
             choice = input("Enter an action flag [f], reveal [r], unflag [n]: ")
             if x > self.size-1 or y > self.size-1:
                 print("Invalid try again")
