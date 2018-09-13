@@ -20,6 +20,7 @@ class Menu :
     
 
     def game_menu(self):
+        play_again = "p"
         while (self.myGame.game_over == False):
             
             print("Please, chose from the menu:")
@@ -32,8 +33,8 @@ class Menu :
             else:
                 print("Goodbye! See you later!")
                 return
-            play_again = input ("Play again (p), otherwise (q): ")
             while play_again != "q":
+                play_again = input ("Play again (p), otherwise (q): ")
                 if play_again == "p":
                     self.myGame = Executive ()
                     self.myGame.setup()
