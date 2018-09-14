@@ -11,11 +11,11 @@ from executive import Executive
 class Menu :
 
     def __init__(self):
-        self.choice = 2
-        self.mines_num = 0
-        self.board_size = 0
+        #self.choice = 2
+        #self.mines_num = 0
+        #self.board_size = 0
         #self.game_over = game_over
-        self.is_loser = False
+        #self.is_loser = False
         self.myGame = Executive ()
     
 
