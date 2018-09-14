@@ -94,7 +94,7 @@ class Executive:
             self.size = board_size_select
         else:
             print('Not a valid board size. Try again')
-        
+            board_size_select = self.error_type_handler()
         max_mines = self.size * self.size - 1
         print ("Enter the number of mines, it should be between 1 and " + str(max_mines))
         mine_num_select = self.error_type_handler ()
@@ -102,7 +102,7 @@ class Executive:
             self.mines = mine_num_select
         else:
             print('Not a valid amount of mines. Try again')
-
+            mine_num_select = self.error_type_handler()
         self.num_flags = self.mines
 
         self.grid = self.myBoard.make_grid(self.size)
