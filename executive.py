@@ -132,7 +132,8 @@ class Executive:
                 print("Invalid try again")
             elif not self.grid[x][y].is_flagged and self.num_flags == 0 and choice == "f":
                 print("Out of flags. Try again.")
-            elif not self.grid[x][y].is_flagged and choice == "f":
+            # we need to check if the square is number when the choice is flag so I added the last condition!
+            elif not self.grid[x][y].is_flagged and choice == "f" and self.grid[x][y].num_adj_mines == 0:
                 self.grid[x][y].is_flagged = True
                 self.num_flags -= 1
                 self.check_win()
